@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <heading className={styles.title}>Hello World!</heading>
+        <h1 className={styles.title} id='helloWorld'>Hello World!</h1>
       </main>
     </div>
   );
