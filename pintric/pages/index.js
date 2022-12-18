@@ -13,7 +13,9 @@ export default function Home() {
       </Head>
       <Navbar />
       <main className={styles.main}>
-        <h1 className={styles.title} id='helloWorld'>Hello World!</h1>
+        <h1 className={styles.title} id="helloWorld">
+          Hello World!
+        </h1>
       </main>
     </div>
   );
