@@ -1,7 +1,10 @@
 import { render, screen } from "@testing-library/react";
+import { createMemoryHistory } from 'history';
 import Home from "../pages/index";
-import Login from "../pages/login/login";
+import Login from "../pages/login";
+import { Navbar } from "../pages/components/navbar";
 import "@testing-library/jest-dom";
+import userEvent from '@testing-library/user-event';
 
 describe("Home", () => {
   it("renders a heading", () => {
@@ -13,10 +16,33 @@ describe("Home", () => {
   });
 
   it('there are buttons for login/signup page', () => {
+    // Arrange
+    render(<Home/>);
 
+    // Act
+    const loginLink = screen.getByRole('link', {name: 'Login'
+    });
+
+    // Assert
+    expect(loginLink).toBeInTheDocument();    
   });
 
-  it('login button send you to login page', () => {
+  it('login button send you to login page', async () => {
+    // Arrange
+    const history = createMemoryHistory();
+    const user = userEvent.setup()
+
+    render(<Home/>);
+
+    const loginButton = screen.getByRole('link', {name: 'Login'
+  });
+
+    // Act
+    await user.click(loginButton);
+
+    // Assert
+    console.log(history.location);
+    expect(history.location.pathname).toBe(`/login`)
 
   });
 
